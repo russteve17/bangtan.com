@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/fb/website#">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <title>Big Hit Shop</title>
+        <style>
+            .btn-l,.btn-r,.top-area img {
+                cursor: pointer
+            }
+
+            body,ul {
+                margin: 0
+            }
+
+            .notice ul>li,html {
+                font-family: Roboto;
+                text-align: center
+            }
+
+            .btn-group ul>li,.guide,.popup-layer .btn,.title-area,.top-area {
+                text-align: center
+            }
+
+            body {
+                padding-bottom: 10px
+            }
+
+            ul {
+                padding: 0
+            }
+
+            ul>li {
+                list-style: none
+            }
+
+            .top-area img {
+                padding: 21px 0;
+                height: 28px
+            }
+
+            .title-area {
+                height: 308px;
+                background: url(https://s3.ap-northeast-2.amazonaws.com/ibighit.com/home/cover/pc/preorder-header.png) center center no-repeat
+            }
+
+            .title-area .image {
+                display: inline-block;
+                padding: 41px 100px 0
+            }
+
+            .title-area .image img {
+                height: 166px
+            }
+
+            .title-area .title {
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 1.36;
+                text-align: center;
+                color: #fff
+            }
+
+            .guide {
+                height: 40px;
+                background-color: #f2f7fe;
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 3.5;
+                color: #2c8de7;
+                border-bottom: 1px solid #d5e7f6
+            }
+
+            .btn-group {
+                height: 88px;
+                position: relative
+            }
+
+            .btn-group ul {
+                height: 56px;
+                position: relative;
+                top: 16px
+            }
+
+            .dim-layer,.popup-layer {
+                position: absolute;
+                width: 100%
+            }
+
+            .btn-group .btn-hide {
+                position: absolute;
+                top: 16px;
+                width: 66%;
+                background-color: #fff;
+                opacity: .7;
+                right: 0;
+                display: none
+            }
+
+            .btn-group .btn-hide>li {
+                top: 16px;
+                width: 100%;
+                border-right: none
+            }
+
+            .btn-group ul>li {
+                width: calc(99.4%/2);
+                border-right: 1px solid #e5e7e8;
+                height: 100%;
+                float: left;
+                cursor: pointer
+            }
+
+            .btn-group ul>li:last-child {
+                border-right: none
+            }
+
+            .btn-group ul>li .name {
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 1.23;
+                letter-spacing: -.1px;
+                color: #222;
+                margin-top: 4px
+            }
+
+            .btn-group ul>li img {
+                height: 32px
+            }
+
+            .box {
+                min-height: 200px;
+                border-radius: 4px;
+                box-shadow: 0 1px 3px 0 rgba(118,173,198,.08);
+                background-color: #fff;
+                border: 1px solid #dce2e6;
+                margin: 24px 14px 20px
+            }
+
+            .notice {
+                padding: 20px
+            }
+
+            .notice .title {
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.31;
+                color: #222;
+                margin-bottom: 18px
+            }
+
+            .notice .contents,.notice .sub-title,.notice ul>li {
+                font-size: 14px;
+                color: #646464;
+                text-align: left
+            }
+
+            .notice ul>li {
+                padding-bottom: 14px
+            }
+
+            .notice .sub-title {
+                font-weight: 700;
+                line-height: 1.43;
+                margin-bottom: 4px
+            }
+
+            .notice .contents {
+                margin-bottom: 18px;
+                line-height: 1.43
+            }
+
+            .dim-layer {
+                top: 0;
+                left: 0;
+                height: 100%;
+                background: #000;
+                opacity: .5;
+                filter: alpha(opacity=50);
+                z-index: 10;
+                display: none
+            }
+
+            .popup-layer {
+                top: 30%;
+                height: auto;
+                z-index: 100;
+                display: none
+            }
+
+            .popup-layer .wrap {
+                padding: 16px 10px 1px;
+                margin: 0 31px;
+                background-color: #FFF
+            }
+
+            .popup-layer .wrap .title {
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.38;
+                color: #000;
+                margin-bottom: 6px
+            }
+
+            .popup-layer .wrap .ea span {
+                font-size: 16px;
+                font-weight: 700;
+                color: #222
+            }
+
+            .popup-layer .wrap .ea small {
+                font-size: 14px;
+                color: #222;
+                -webkit-text-stroke: 1px #979797
+            }
+
+            .popup-layer .wrap .info,.popup-layer .wrap .info .row {
+                margin-bottom: 12px
+            }
+
+            .popup-layer .wrap .info .col {
+                font-size: 13px;
+                color: #888;
+                float: left
+            }
+
+            .popup-layer .wrap .info .value {
+                font-size: 13px;
+                color: #555
+            }
+
+            .popup-layer .close {
+                position: absolute;
+                top: 31px;
+                right: 44px
+            }
+
+            .popup-layer .btn {
+                width: 100%;
+                display: inline-block
+            }
+
+            .popup-layer .btn>div {
+                font-size: 14px;
+                color: #fff;
+                background-color: #000;
+                margin-bottom: 10px;
+                height: 36px;
+                line-height: 2.5;
+                width: 100%
+            }
+
+            .btn-r {
+                float: right
+            }
+
+            .btn-l {
+                float: left;
+                margin-right: 6px
+            }
+
+            .popup-layer .line {
+                height: 1px;
+                background-color: #e5e7e8;
+                margin: 14px 0
+            }
+
+            .m-bt-0 {
+                margin-bottom: 0!important
+            }
+
+            .m-r-12 {
+                margin-right: 12px
+            }
+
+            .detail img {
+                width: 100%
+            }
+
+            .contents-wrap {
+                text-align: center;
+                display: inline-block
+            }
+
+            .btn-line {
+                border: 1px solid #dce2e6
+            }
+
+            @media (min-width: 1000px) {
+                .btn-group,.contents-wrap,.popup-layer {
+                    max-width:620px
+                }
+
+                .popup-layer .btn>div {
+                    width: 49.4%
+                }
+
+                .popup-layer .wrap .info .value {
+                    width: 50%
+                }
+
+                .btn-group {
+                    display: inline-block
+                }
+
+                .btn-group ul {
+                    width: 618px
+                }
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,700" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0]
+                  , j = d.createElement(s)
+                  , dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            }
+            )(window, document, 'script', 'dataLayer', 'GTM-5HQDRQW');
+        </script>
+        <!-- End Google Tag Manager -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118317715-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-118317715-2');
+        </script>
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118317715-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-118317715-2');
+        </script>
+</head>
+<body>
+    <div class="top-area">
+        <img src="m_top_logo.png" onclick="ibighit()">
+    </div>
+    <div class="guide">This is UPS Shipping Product only for purchase in USA
+        </div>
+    <div class="title-area">
+        <div class="image">
+            <img src="preorder-armybomb.png">
+        </div>
+        <div class="title">
+            BTS Official Light Stick Ver.3
+                <br/>(USA Only)
+            
+        </div>
+    </div>
+    <div id="pre-btn" class="btn-group">
+        <ul>
+            <li id="join">
+                <div>
+                    <img src="pre-join.png">
+                </div>
+                <div class="name">Join/Login</div>
+            </li>
+            <!--                 <li id="address">
+                    <div><img src="pre-address.png"></div>
+                    <div class="name">Shipping Address</div>
+                </li> -->
+            <li id="buy">
+                <div>
+                    <img src="pre-buy.png">
+                </div>
+                <div class="name">Buy Now</div>
+            </li>
+        </ul>
+        <ul id="btn-hide" class="btn-hide">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="btn-line"></div>
+    <div class="contents-wrap">
+        <div class="box">
+            <div class="notice">
+                <div class="title">Purchase Notice</div>
+                <ul>
+                    <li>- After Signing Up, you can access the purchase page by logging in.</li>
+                    <li>- If you add your shipping information in advance, you can complete the purchase quickly.</li>
+                    <li>- Purchase can be made only through Paypal. Please signup for Paypal Service first. </li>
+                    <li>- You have option to choose from 1 light stick, or 2(SET) light sticks, each product can be sold out earlier depending on the available product quantity. </li>
+                    <li>- Expected Shipping Date : Sequential Order from 2018-08-20(Mon) by UPS.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="detail">
+            <img src="https://v.ibighit.com/goods/c-0012/g-103/pc/59_DW_EN.png">
+        </div>
+        <div class="box">
+            <div class="notice">
+                <div class="title">Return/Exchange</div>
+                <div class="sub-title">Return/Exchange Method</div>
+                <div class="contents">My Page > 1:1 Inquiry or CS Center (1544-0790)
+                    </div>
+                <div class="sub-title">Return/Exchange Period</div>
+                <div class="contents">Change of Mind : If you’re not satisfied with the merchandise received, you may request for exchange/return of the merchandise within 7 days from the date of delivery by submitting shipping fee and shipping the merchandise back to the Big Hit Shop.
+                    </div>
+                <div class="contents">Wrong Order and Defective Items : If you’ve received wrong order or merchandise with manufactured defects, you may request for exchange/return of the merchandise within 90 days from the date of delivery by submitting shipping the merchandise back to the Big Hit Shop(You should leave your request on 1:1 inquiry within 30 days after receiving the merchandise)
+                    </div>
+                <div class="sub-title">Return/Exchange Shipping Cost</div>
+                <div class="contents">If the ‘Return’ is due to buyer’s change of mind, buyer will have to bear their own shipping fee to return the product back to the seller.
+                    </div>
+                <div class="contents">If the ‘Return’ is due to damaged, faulty or wrong products, seller will have to bear buyer’s return shipping fee.
+                    </div>
+                <div class="sub-title">Reasons for NOT possible Return/Exchange</div>
+                <div class="contents">Worn or damaged merchandise - Any merchandise that has been considered worn or used upon return or if the items are no longer in perfect condition due to removal of labels and original packaging will not be refunded.
+                    </div>
+                <div class="sub-title">Refund Delays Compensations</div>
+                <div class="contents m-bt-0">Matters concerning returns, exchanges, refunds, quality assurance and damage compensation due to defective products are handled in accordance with the consumer dispute resolution standards (Notice by Fair Trade Commission). Payment terms and procedures for refund or delayed refund are handled in accordance with the Act on Protection of Consumers in Electronic Commerce, etc.
+                    </div>
+            </div>
+        </div>
+        <div class="dim-layer"></div>
+        <div class="popup-layer">
+            <div class="close">
+                <img src="preorder-close.png" onclick="close_popup()">
+            </div>
+            <div class="wrap">
+                <div class="title">
+                    BTS Official Light Stick Ver.3
+                        <br/>(USA ONLY)
+                </div>
+                <div class="ea">
+                    <span>$55.00</span>
+                    <small class="m-r-12">/1ea</small>
+                    <span>$110.00</span>
+                    <small>/2ea</small>
+                </div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="row">
+                        <div class="col">Shipping</div>
+                        <div class="value">UPS (USA Only)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Earn Point</div>
+                        <div class="value">618 P (1ea) / 1236 P (2ea)</div>
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="btn-l" onclick="buy(151, 17)">Buy 1 Light Stick</div>
+                    <div class="btn-r" onclick="buy(152, 17)">Buy 2 Light Sticks</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="buyForm" method="POST">
+        <input type="hidden" name="goodsSeq"/>
+        <input type="hidden" name="shipping_method"/>
+        <input type="hidden" name="shipping_prepay_info" value="delivery"/>
+        <input type="hidden" name="option_select_goods_seq"/>
+        <input type="hidden" name="option_select_provider_seq" value="1"/>
+        <input type="hidden" name="gl_option_select_ver" value="0.1"/>
+        <input type="hidden" name="use_add_action_button" value="n"/>
+        <input type="hidden" name="optionEa[0]" value="1"/>
+        <input type="hidden" name="store_sel" value=""/>
+        <input type="hidden" name="hop_select_date" value=""/>
+        <input type="hidden" name="option[0][0]" value=""/>
+        <input type="hidden" name="optionTitle[0][0]" value=""/>
+    </form>
+    <script type="text/javascript">
+        var REQUEST_ERROR_MESSAGE = 'An error has occurred. Please refresh and try again.';
+        var TARGET_DOMAIN = 'www.ibighit.com';
+        var service_domain = function() {
+            var filter = "win16|win32|win64|mac|macintel";
+            if (navigator.platform) {
+                if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+                    return TARGET_DOMAIN.replace('www.', 'm.');
+                } else {
+                    return TARGET_DOMAIN;
+                }
+            }
+        }();
+        var request_url = location.protocol + '//' + service_domain;
+
+        var __login_ok = function() {
+            $('#btn-hide').css('width', '33%');
+            $('#btn-hide').css('left', '0');
+        };
+
+        $().ready(function() {
+            $.ajax({
+                type: 'GET',
+                xhrFields: {
+                    withCredentials: true
+                },
+                url: request_url + '/member/login_ok'
+            }).done(function(res) {
+                $('#btn-hide').show();
+                if (res['code'] == 200 && res['status'] == 'ok') {
+                    __login_ok();
+                }
+            }).fail(function(jqXHR, textStatus) {
+                $('#btn-hide').show();
+                alert(REQUEST_ERROR_MESSAGE);
+            });
+
+            $('#join').on('click', function() {
+                location.href = request_url + '/member/login';
+            });
+
+            $('#address').on('click', function() {
+                location.href = request_url + '/mypage/delivery_address';
+            });
+
+            $('#buy').on('click', function() {
+                var top = $(window).scrollTop();
+                $('.dim-layer').css('top', top + 'px');
+                $('.popup-layer').css('top', (top + 150) + 'px');
+
+                $('.dim-layer').show();
+                $('.popup-layer').show();
+            });
+        });
+
+        var ibighit = function() {
+            location.href = request_url;
+        }
+
+        var close_popup = function() {
+            $('.dim-layer').hide();
+            $('.popup-layer').hide();
+        }
+
+        var buy = function(goods_seq, shipping_method) {
+            var url = request_url + '/order/add_direct';
+            var redirect_url = request_url + '/order/settle?mode=direct';
+
+            $('input[name=goodsSeq]').val(goods_seq);
+            $('input[name=option_select_goods_seq]').val(goods_seq);
+            $('input[name=shipping_method]').val(shipping_method);
+
+            var params = $("#buyForm").serialize();
+            $.ajax({
+                url: url,
+                type: 'POST',
+                xhrFields: {
+                    withCredentials: true
+                },
+                data: params,
+                success: function(res) {
+                    if (res['code'] == 200 && res['status'] == 'SUCCESS') {
+                        location.href = redirect_url;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
